@@ -36,7 +36,8 @@ Se busca:
 
 ### Topología de red
 
-![Topología del laboratorio](<img width="642" height="472" alt="image" src="https://github.com/user-attachments/assets/f0ca2fbe-f797-45e2-9752-851d1e65bd81" />)
+![Topología del laboratorio] <img width="1427" height="773" alt="image" src="https://github.com/user-attachments/assets/83ec4106-0267-4379-bdd6-ad7c60ed011b" />
+
 
 La infraestructura está compuesta por:
 
