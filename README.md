@@ -1,172 +1,212 @@
-# Análisis CIS Benchmark – Router Cisco R1
+# Laboratorio de Seguridad de Infraestructura de Redes – ITLA
+
+## 🎥 VIDEO DEMOSTRATIVO
+
+**Video de presentación y demostración del laboratorio:**
+
+[VER VIDEO DEMOSTRATIVO EN YOUTUBE](PEGAR_AQUI_EL_ENLACE_DEL_VIDEO)
+
+---
 
 ## 1. Descripción del proyecto
 
-Este proyecto tiene como objetivo realizar una evaluación de seguridad sobre un router Cisco mediante una herramienta de auditoría automatizada basada en las recomendaciones del **Center for Internet Security (CIS)**.
+Este repositorio contiene la documentación técnica, configuraciones, scripts, diagramas y evidencias correspondientes al laboratorio de Seguridad de Infraestructura de Redes.
 
-La evaluación permite identificar configuraciones inseguras, debilidades en los mecanismos de administración y posibles incumplimientos de las buenas prácticas de segurid``ad recomendadas para dispositivos de infraestructura de red.
+El proyecto consiste en implementar, administrar, monitorear y evaluar la seguridad de una infraestructura de red utilizando dispositivos Cisco, un servidor Ubuntu y herramientas especializadas de monitoreo y auditoría.
 
-Se utilizará la herramienta **ONYX – Cisco Automated Assessment and Auditing Tool** para realizar la evaluación inicial del router y generar un informe con los hallazgos identificados.
+Se implementan mecanismos de autenticación y autorización, administración remota segura, monitoreo mediante SNMP, asignación dinámica de direcciones IP mediante DHCP y evaluación de configuraciones de seguridad basadas en recomendaciones CIS.
 
-## 2. Objetivos
+## 2. Propósito del laboratorio
 
-- Evaluar la configuración de seguridad del router Cisco.
-- Identificar incumplimientos de las recomendaciones CIS.
-- Analizar los mecanismos de administración y acceso remoto.
-- Identificar configuraciones inseguras en los servicios de red.
-- Generar un informe inicial de auditoría.
-- Documentar los hallazgos que posteriormente servirán como referencia para aplicar medidas de hardening.
+El propósito principal es aplicar conocimientos prácticos de administración y seguridad de infraestructura de redes, fortaleciendo los mecanismos de protección de los dispositivos y servicios que forman parte de una red empresarial.
 
-## 3. Entorno de laboratorio
+Se busca:
 
-| Componente | Descripción |
-|---|---|
-| Dispositivo auditado | Router Cisco R1 |
-| Dirección IP | 10.23.13.1 |
-| Sistema operativo | Cisco IOS 15.2(4)S6 |
-| Herramienta de auditoría | ONYX |
-| Sistema de auditoría | Ubuntu Server |
-| Protocolo de administración | SSH |
-| Estándar de referencia | CIS Benchmark |
-| Identificador académico | Matrícula terminada en 1323 |
+- Implementar mecanismos de autenticación, autorización y registro de eventos mediante AAA.
+- Configurar el acceso administrativo remoto utilizando SSH.
+- Deshabilitar protocolos de administración inseguros como Telnet.
+- Implementar asignación automática de direcciones IP mediante DHCP.
+- Configurar SNMP para obtener información de los dispositivos de red.
+- Implementar Zabbix para monitorear el router y el switch.
+- Realizar evaluaciones de seguridad basadas en CIS Benchmark.
+- Identificar configuraciones inseguras y documentar oportunidades de mejora.
+- Aplicar medidas de hardening para fortalecer la infraestructura.
 
-## 4. Herramienta utilizada
+## 3. Arquitectura del laboratorio
 
-### ONYX – Cisco Automated Assessment and Auditing Tool
+### Topología de red
 
-ONYX es una herramienta orientada a la evaluación automatizada de configuraciones de dispositivos Cisco.
+![Topología del laboratorio](diagramas/topologia-laboratorio.png)
 
-Permite revisar parámetros de seguridad del dispositivo, identificar configuraciones que no cumplen con las recomendaciones de seguridad y generar resultados de auditoría.
+La infraestructura está compuesta por:
 
-Repositorio de la herramienta:
+| Dispositivo | Dirección IP | Función |
+|---|---|---|
+| R1 – Cisco | 10.23.13.1/24 | Enrutamiento, DHCP, AAA y SNMP |
+| SW1 – Cisco | 10.23.13.2/24 | Conmutación y administración SNMP |
+| Ubuntu Server | DHCP (esperada: 10.23.13.4) | Zabbix y herramientas de auditoría |
 
-https://github.com/UncleSocks/Onyx
+**Segmento de red:** 10.23.13.0/24
 
-### Funciones utilizadas
+### Diagrama lógico
 
-- Conexión remota al dispositivo Cisco mediante SSH.
-- Evaluación de configuraciones de seguridad.
-- Comparación con controles de referencia CIS compatibles.
-- Identificación de controles aprobados y fallidos.
-- Generación de informes de auditoría.
+```mermaid
+flowchart TD
+    A[Ubuntu Server - Zabbix]
+    B[R1 - Cisco Router]
+    C[SW1 - Cisco Switch]
+    D[DHCP]
+    E[AAA y autenticación local]
+    F[SNMP]
+    G[Monitoreo Zabbix]
 
-## 5. Metodología de evaluación
-
-La auditoría se desarrollará en las siguientes etapas:
-
-**Fase 1 – Preparación**
-
-Se prepara el entorno Ubuntu Server y se instala la herramienta de auditoría. Se verifica la conectividad con el router y la disponibilidad del acceso administrativo SSH.
-
-**Fase 2 – Auditoría inicial**
-
-Se ejecuta el análisis del router Cisco sin modificar su configuración. El propósito es obtener una referencia del estado de seguridad original del dispositivo.
-
-**Fase 3 – Identificación de hallazgos**
-
-Se revisan los controles evaluados y se clasifican según los resultados obtenidos:
-
-- PASS: configuración que cumple el control evaluado.
-- FAIL: configuración que no cumple el control evaluado.
-- NA / Unchecked: control no aplicable o que no pudo evaluarse.
-
-**Fase 4 – Documentación**
-
-Se recopilan los resultados, capturas de pantalla e informe generado por la herramienta para documentar el estado inicial de seguridad del router.
-
-## 6. Controles de seguridad evaluados
-
-La auditoría estará orientada a revisar aspectos como:
-
-| Área | Aspecto evaluado |
-|---|---|
-| Administración | Acceso administrativo seguro |
-| Autenticación | Usuarios y contraseñas |
-| SSH | Administración remota cifrada |
-| AAA | Autenticación y autorización |
-| SNMP | Configuración del protocolo de monitoreo |
-| Servicios | Servicios innecesarios |
-| Contraseñas | Protección de credenciales |
-| Logging | Registro de eventos |
-| Control de acceso | Listas de control de acceso |
-| Plano de control | Protección de los servicios de administración |
-
-Los controles definitivos dependerán de los controles incluidos en la versión del benchmark compatible con el dispositivo.
-
-## 7. Resultados de la auditoría inicial
-
-En esta sección se documentarán los resultados obtenidos durante el primer análisis del router Cisco R1.
-
-**Estado inicial:** Pendiente de incorporar el informe real generado por ONYX.
-
-| Indicador | Resultado |
-|---|---|
-| Total de controles evaluados | Pendiente |
-| Controles PASS | Pendiente |
-| Controles FAIL | Pendiente |
-| Controles NA / Unchecked | Pendiente |
-| Estado general | Pendiente |
-
-### Hallazgos identificados
-
-Se documentarán los controles que presenten incumplimientos, incluyendo:
-
-- Identificador del control.
-- Descripción del incumplimiento.
-- Configuración actual del router.
-- Recomendación de seguridad.
-- Justificación de la recomendación.
-
-**Nota:** Los resultados no se completarán hasta disponer del informe real de auditoría.
-
-## 8. Evidencias
-
-Se incluirán las siguientes evidencias:
-
-1. Instalación de la herramienta ONYX.
-2. Conectividad SSH entre Ubuntu Server y R1.
-3. Ejecución de la auditoría inicial.
-4. Resultados de los controles evaluados.
-5. Informe HTML generado por la herramienta.
-6. Capturas de los hallazgos identificados.
-
-## 9. Estructura del repositorio
-
-```text
-Analisis-CIS-Router/
-│
-├── README.md
-│
-├── informes/
-│   └── auditoria_inicial/
-│       └── informe_CIS_R1.html
-│
-├── evidencias/
-│   ├── 01_instalacion_onyx.png
-│   ├── 02_conexion_ssh_R1.png
-│   ├── 03_ejecucion_auditoria.png
-│   ├── 04_resultados_auditoria.png
-│   └── 05_hallazgos_CIS.png
-│
-├── configuraciones/
-│   └── running-config_R1.txt
-│
-└── documentacion/
-    └── hallazgos_y_recomendaciones.md
+    A -->|SSH / SNMP| B
+    A -->|SNMP| C
+    B --> D
+    B --> E
+    B --> F
+    C --> F
+    A --> G
 ```
 
-## 10. Conclusión
+## 4. Tecnologías y herramientas utilizadas
 
-La evaluación mediante CIS Benchmark permite conocer el estado inicial de seguridad del router Cisco e identificar configuraciones que pueden representar riesgos para la infraestructura de red.
+| Tecnología | Aplicación |
+|---|---|
+| GNS3 | Simulación de infraestructura de red |
+| VMware | Virtualización de servidores |
+| Cisco IOS | Administración de router y switch |
+| Ubuntu Server | Servidor de monitoreo |
+| Zabbix | Monitoreo de infraestructura |
+| SNMP v2c | Obtención de información de dispositivos |
+| DHCP | Asignación dinámica de direcciones IP |
+| AAA | Autenticación y autorización |
+| SSH | Administración remota segura |
+| CIS Benchmark | Referencia para evaluación de seguridad |
+| Python | Automatización y auditoría |
 
-El informe inicial constituye la referencia para futuras actividades de hardening, permitiendo establecer qué controles requieren atención y justificar las medidas de seguridad que se implementen posteriormente.
+## 5. Desarrollo del laboratorio
 
-La finalidad es mejorar la seguridad del dispositivo, fortalecer su administración y reducir la superficie de exposición de la infraestructura de red.
+### 5.1. Configuración de infraestructura Cisco
+
+Se realiza la configuración inicial de los dispositivos Cisco R1 y SW1, incluyendo direccionamiento IP, parámetros de administración y conectividad entre los equipos.
+
+Se documentan las configuraciones mediante archivos Running-Config.
+
+Documentación: [Configuración Cisco](documentacion/02-configuracion-cisco.md)
+
+### 5.2. Logs de AAA y RADIUS
+
+Se implementan mecanismos de autenticación y autorización para controlar el acceso administrativo a los dispositivos.
+
+Se realizan pruebas de acceso exitoso y fallido para verificar el comportamiento del sistema y la generación de registros.
+
+Documentación: [AAA y RADIUS](documentacion/03-aaa-radius-logs.md)
+
+### 5.3. Acceso administrativo por SSH
+
+Se configura el acceso administrativo remoto mediante SSH utilizando usuarios locales y contraseñas protegidas.
+
+Se restringe el acceso remoto exclusivamente al protocolo SSH, deshabilitando Telnet en los dispositivos.
+
+Documentación: [Acceso SSH](documentacion/04-acceso-administrativo-ssh.md)
+
+### 5.4. Zabbix, DHCP y SNMP
+
+Se implementa Zabbix sobre Ubuntu Server para monitorear los dispositivos de red.
+
+El servidor obtiene su dirección IP mediante DHCP y utiliza SNMP para consultar información del router y del switch.
+
+Se incorporan los dispositivos a Zabbix para visualizar sus parámetros de operación y monitoreo.
+
+Documentación: [Zabbix, DHCP y SNMP](documentacion/05-zabbix-dhcp-snmp.md)
+
+### 5.5. Auditoría de seguridad CIS
+
+Se contempla la evaluación de la configuración del router Cisco utilizando una herramienta de auditoría basada en CIS Benchmark.
+
+El objetivo es identificar configuraciones que no cumplan con las recomendaciones de seguridad y generar un informe inicial con los hallazgos.
+
+Se documentarán posteriormente la herramienta seleccionada, los resultados de la evaluación y las recomendaciones de seguridad correspondientes.
+
+Documentación: [Auditoría CIS](documentacion/06-auditoria-cis.md)
+
+**Estado:** pendiente de seleccionar, instalar y probar la herramienta de auditoría.
+
+## 6. Diagramas
+
+Los diagramas permiten representar visualmente la arquitectura, los mecanismos de autenticación y los procesos implementados.
+
+- Topología general del laboratorio.
+- Flujo de autenticación AAA y RADIUS.
+- Arquitectura de monitoreo Zabbix y SNMP.
+- Esquema de direccionamiento IP.
+
+Ubicación: `/diagramas`
+
+## 7. Scripts y automatizaciones
+
+En este directorio se almacenarán todos los scripts desarrollados o utilizados durante el laboratorio.
+
+Se documentará para cada script:
+
+- Propósito.
+- Requisitos.
+- Dependencias.
+- Forma de ejecución.
+- Resultados esperados.
+
+Ubicación: `/scripts`
+
+## 8. Configuraciones de los dispositivos
+
+Se incluyen las configuraciones utilizadas en los dispositivos Cisco y los archivos relevantes del servidor Ubuntu.
+
+| Archivo | Dispositivo |
+|---|---|
+| R1/running-config.txt | Router Cisco |
+| SW1/running-config.txt | Switch Cisco |
+| Ubuntu/netplan.yaml | Configuración de red Ubuntu |
+
+Las configuraciones publicadas deben excluir contraseñas, claves privadas, secretos y cualquier información sensible.
+
+Ubicación: `/configuraciones`
+
+## 9. Informes y evidencias
+
+Se almacenarán los informes generados por las herramientas utilizadas y las capturas de pantalla que demuestren el funcionamiento de cada componente.
+
+Las evidencias estarán organizadas por actividad para facilitar su revisión y validación.
+
+Ubicación:
+
+- `/informes`
+- `/evidencias`
+
+## 10. Resultados esperados
+
+Al finalizar el laboratorio se espera contar con:
+
+- Infraestructura Cisco configurada y operativa.
+- Autenticación y autorización administrativa.
+- Registro de accesos exitosos y fallidos.
+- Administración remota mediante SSH.
+- Servicio DHCP funcionando para el servidor Zabbix.
+- Monitoreo SNMP del router y del switch.
+- Evaluación de seguridad basada en CIS Benchmark.
+- Documentación técnica completa.
+- Scripts y configuraciones disponibles para su revisión.
+
+## 11. Conclusión
+
+Este laboratorio permite integrar diferentes mecanismos de seguridad y administración de infraestructura de redes, aplicando conocimientos de configuración de dispositivos Cisco, autenticación, monitoreo y evaluación de seguridad.
+
+La documentación y las evidencias recopiladas permiten demostrar el funcionamiento de los servicios implementados y establecer una referencia para futuras actividades de hardening y mejora continua de la seguridad.
 
 ---
 
 **Proyecto académico – ITLA**
 
-Laboratorio de Seguridad de Infraestructura de Redes.
+**Área:** Seguridad de Infraestructura de Redes
 
-**Dispositivo auditado:** Cisco R1 – 10.23.13.1.
+**Identificador de direccionamiento:** 10.23.13.0/24
