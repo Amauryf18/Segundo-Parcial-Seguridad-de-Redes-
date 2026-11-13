@@ -4,7 +4,7 @@
 
 Este proyecto tiene como objetivo realizar una evaluación de seguridad sobre un router Cisco mediante una herramienta de auditoría automatizada basada en las recomendaciones del **Center for Internet Security (CIS)**.
 
-La evaluación permite identificar configuraciones inseguras, debilidades en los mecanismos de administración y posibles incumplimientos de las buenas prácticas de seguridad recomendadas para dispositivos de infraestructura de red.
+La evaluación permite identificar configuraciones inseguras, debilidades en los mecanismos de administración y posibles incumplimientos de las buenas prácticas de segurid``ad recomendadas para dispositivos de infraestructura de red.
 
 Se utilizará la herramienta **ONYX – Cisco Automated Assessment and Auditing Tool** para realizar la evaluación inicial del router y generar un informe con los hallazgos identificados.
 
