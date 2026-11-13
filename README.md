@@ -36,7 +36,7 @@ Se busca:
 
 ### Topología de red
 
-![Topología del laboratorio](diagramas/topologia-laboratorio.png)
+![Topología del laboratorio](<img width="642" height="472" alt="image" src="https://github.com/user-attachments/assets/f0ca2fbe-f797-45e2-9752-851d1e65bd81" />)
 
 La infraestructura está compuesta por:
 
@@ -101,7 +101,7 @@ Se implementan mecanismos de autenticación y autorización para controlar el ac
 
 Se realizan pruebas de acceso exitoso y fallido para verificar el comportamiento del sistema y la generación de registros.
 
-Documentación: [AAA y RADIUS](documentacion/03-aaa-radius-logs.md)
+Evidencia: [AAA y RADIUS](<img width="1280" height="786" alt="image" src="https://github.com/user-attachments/assets/cd05c5b8-7dc5-4d48-ad64-a62ce01852a2" />)
 
 ### 5.3. Acceso administrativo por SSH
 
@@ -109,7 +109,8 @@ Se configura el acceso administrativo remoto mediante SSH utilizando usuarios lo
 
 Se restringe el acceso remoto exclusivamente al protocolo SSH, deshabilitando Telnet en los dispositivos.
 
-Documentación: [Acceso SSH](documentacion/04-acceso-administrativo-ssh.md)
+Evidencia: [Acceso SSH]<img width="1330" height="381" alt="image" src="https://github.com/user-attachments/assets/b498e2ac-d2e8-4dcd-b05a-6677b7b1d45c" />
+
 
 ### 5.4. Zabbix, DHCP y SNMP
 
@@ -119,83 +120,10 @@ El servidor obtiene su dirección IP mediante DHCP y utiliza SNMP para consultar
 
 Se incorporan los dispositivos a Zabbix para visualizar sus parámetros de operación y monitoreo.
 
-Documentación: [Zabbix, DHCP y SNMP](documentacion/05-zabbix-dhcp-snmp.md)
+Evidencia: [Zabbix, DHCP y SNMP](<img width="936" height="224" alt="image" src="https://github.com/user-attachments/assets/8d9c090f-b1ae-4ec1-bbcc-dfbec0f17849" />
+)
 
-### 5.5. Auditoría de seguridad CIS
-
-Se contempla la evaluación de la configuración del router Cisco utilizando una herramienta de auditoría basada en CIS Benchmark.
-
-El objetivo es identificar configuraciones que no cumplan con las recomendaciones de seguridad y generar un informe inicial con los hallazgos.
-
-Se documentarán posteriormente la herramienta seleccionada, los resultados de la evaluación y las recomendaciones de seguridad correspondientes.
-
-Documentación: [Auditoría CIS](documentacion/06-auditoria-cis.md)
-
-**Estado:** pendiente de seleccionar, instalar y probar la herramienta de auditoría.
-
-## 6. Diagramas
-
-Los diagramas permiten representar visualmente la arquitectura, los mecanismos de autenticación y los procesos implementados.
-
-- Topología general del laboratorio.
-- Flujo de autenticación AAA y RADIUS.
-- Arquitectura de monitoreo Zabbix y SNMP.
-- Esquema de direccionamiento IP.
-
-Ubicación: `/diagramas`
-
-## 7. Scripts y automatizaciones
-
-En este directorio se almacenarán todos los scripts desarrollados o utilizados durante el laboratorio.
-
-Se documentará para cada script:
-
-- Propósito.
-- Requisitos.
-- Dependencias.
-- Forma de ejecución.
-- Resultados esperados.
-
-Ubicación: `/scripts`
-
-## 8. Configuraciones de los dispositivos
-
-Se incluyen las configuraciones utilizadas en los dispositivos Cisco y los archivos relevantes del servidor Ubuntu.
-
-| Archivo | Dispositivo |
-|---|---|
-| R1/running-config.txt | Router Cisco |
-| SW1/running-config.txt | Switch Cisco |
-| Ubuntu/netplan.yaml | Configuración de red Ubuntu |
-
-Las configuraciones publicadas deben excluir contraseñas, claves privadas, secretos y cualquier información sensible.
-
-Ubicación: `/configuraciones`
-
-## 9. Informes y evidencias
-
-Se almacenarán los informes generados por las herramientas utilizadas y las capturas de pantalla que demuestren el funcionamiento de cada componente.
-
-Las evidencias estarán organizadas por actividad para facilitar su revisión y validación.
-
-Ubicación:
-
-- `/informes`
-- `/evidencias`
-
-## 10. Resultados esperados
-
-Al finalizar el laboratorio se espera contar con:
-
-- Infraestructura Cisco configurada y operativa.
-- Autenticación y autorización administrativa.
-- Registro de accesos exitosos y fallidos.
-- Administración remota mediante SSH.
-- Servicio DHCP funcionando para el servidor Zabbix.
-- Monitoreo SNMP del router y del switch.
-- Evaluación de seguridad basada en CIS Benchmark.
-- Documentación técnica completa.
-- Scripts y configuraciones disponibles para su revisión.
+<img width="1547" height="589" alt="image" src="https://github.com/user-attachments/assets/952bb97c-86aa-4b6e-870e-69da5d891279" />
 
 ## 11. Conclusión
 
