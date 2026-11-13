@@ -93,7 +93,7 @@ Se realiza la configuración inicial de los dispositivos Cisco R1 y SW1, incluye
 
 Se documentan las configuraciones mediante archivos Running-Config.
 
-Documentación: [Configuración Cisco](documentacion/02-configuracion-cisco.md)
+Documentación: [Configuración Cisco](Running-Config)
 
 ### 5.2. Logs de AAA y RADIUS
 
